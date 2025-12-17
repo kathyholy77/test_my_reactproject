@@ -101,71 +101,82 @@ header h1 {
 
 .item-card {
     background-color: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(20,20,30,0.08);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(20,20,30,0.12);
 }
 
 .card-thumbnail {
     background-color: #e9ecef;
-    height: 100px;
+    height: 140px; /* 키를 조금 키움 */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
+    align-items: flex-end; /* 아이콘/텍스트 하단 배치 */
+    justify-content: flex-start;
+    font-size: 1.25rem;
     font-weight: bold;
-    color: var(--secondary-color);
+    color: white;
+    position: relative;
+    padding: 12px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.card-thumbnail svg {
-    width: 48px;
-    height: 48px;
-    color: var(--secondary-color);
+/* 이미지 위에 어둡게 그라데이션 추가해 텍스트 가독성 확보 */
+.thumbnail-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.45) 100%);
+    pointer-events: none;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 16px;
     flex-grow: 1;
 }
 
 .card-content h3 {
-    margin: 0 0 10px;
-    font-size: 1.25rem;
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    color: var(--text-color);
 }
 
 .card-content p {
     margin: 0;
     color: #6c757d;
+    font-size: 0.95rem;
 }
 
 .delete-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,255,0.9);
     border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s;
+    transform: translateY(-4px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .item-card:hover .delete-btn {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .delete-btn svg {
@@ -284,4 +295,10 @@ header h1 {
     border-top: 1px solid var(--border-color);
     color: var(--secondary-color);
     font-size: 0.9rem;
+}
+
+/* 모바일에서 카드 패딩 완화 */
+@media (max-width: 600px) {
+  .card-thumbnail { height: 110px; }
+  .item-grid { gap: 14px; }
 }

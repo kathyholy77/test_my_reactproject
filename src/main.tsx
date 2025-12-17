@@ -3,8 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // BrowserRouter 대신 HashRouter를 불러옵니다.
-import { HashRouter } from 'react-router-dom'; 
-import App from './index';
+import App from './App';
 
 const container = document.getElementById('root');
 if (container) {
@@ -12,9 +11,7 @@ if (container) {
   root.render(
     <React.StrictMode>
       {/* 우리 앱 전체에 HashRouter를 적용합니다. */}
-      <HashRouter>
-        <App />
-      </HashRouter>
+      <App />
     </React.StrictMode>
   );
 }
